@@ -2,12 +2,12 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hello Gridea | 吴超武个人博客</title>
+<title>Minikube 使用 | 吴超武个人博客</title>
 <meta name="description" content="温故而知新" />
-<link rel="shortcut icon" href="https://www.luoboyu.com//favicon.ico?v=1569326970863">
+<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569392177911">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link rel="stylesheet" href="https://www.luoboyu.com//styles/main.css">
+<link rel="stylesheet" href="https://www.luoboyu.com/styles/main.css">
 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -19,8 +19,8 @@
     <div class="main">
       <div class="main-content">
         <div class="site-header">
-  <a href="https://www.luoboyu.com/">
-  <img class="avatar" src="https://www.luoboyu.com//images/avatar.png?v=1569326970863" alt="">
+  <a href="https://www.luoboyu.com">
+  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569392177911" alt="">
   </a>
   <h1 class="site-title">
     吴超武个人博客
@@ -73,58 +73,69 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Hello Gridea
+              Minikube 使用
             </h2>
             <div class="post-info">
               <span>
                 2018-12-12
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
-                <a href="https://www.luoboyu.com//tag/RsNNX0tvL" class="post-tag">
+                <a href="https://www.luoboyu.com/tag/RsNNX0tvL" class="post-tag">
                   # kubernetes
                 </a>
               
-                <a href="https://www.luoboyu.com//tag/1KydVE-hr8" class="post-tag">
+                <a href="https://www.luoboyu.com/tag/1KydVE-hr8" class="post-tag">
                   # 微服务
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://www.luoboyu.com//post-images/hello-gridea.png" alt="">
+              <img class="post-feature-image" src="https://www.luoboyu.com/post-images/hello-gridea.png" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                <p>背景介绍<br>
+Minikube是什么？</p>
+<p><a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">Minikube</a>是一个能够在虚拟机中运行单节点Kubernetes集群的工具，它使得开发者可以在本地环境中进行开发和调试Kubernetes。推荐阿里封装的<a href="https://github.com/AliyunContainerService/minikube">minikube</a></p>
+<p>Kubernetes又是什么？</p>
+<p>Kubernetes是一个用来自动部署、伸缩、和管理容器化应用的开源系统。<br>
+容器又是什么？</p>
+<p>容器指的是运用虚拟化技术将不同应用和其所需的运行环境进行隔离的进程，其中Docker是最著名的开源容器软件。</p>
+<p><strong>容器又是什么？</strong></p>
+<p>容器指的是运用虚拟化技术将不同应用和其所需的运行环境进行隔离的进程，其中<a href="https://www.docker.com/what-docker#/overview">Docker</a>是最著名的开源容器软件。</p>
+<ul>
+<li>我有几个项目使用的不同Node.js版本，开发调试需要进行切换很不方便。——容器的虚拟运行环境可以解决</li>
+<li>每次部署都要重新安装依赖，而且不同环境依赖安装后可能出现问题。——打包成镜像，无需再安装依赖，秒级启动。</li>
+<li>我想创建几个同样的进程做负载均衡/高可用。——用Kubernetes创建容器副本。</li>
+<li>我希望我的进程在生产环境中挂掉或者被误杀之后自动重新启动。——用Kubernetes的自愈功能操作容器。</li>
+<li>根据不同机器的资源使用情况来分配进程。——用Kubernetes来调度容器。<br>
+…</li>
+</ul>
+<h2 id="hyper-vwindows8以上的系统默认已安装">Hyper-V（Windows8以上的系统默认已安装）</h2>
+<p>首先<code>minikube start</code>会默认使用VirtualBox，但是我们用的是Hyper-V，所以需要加参数指定：</p>
+<pre><code>minikube start --vm-driver=hyperv
+</code></pre>
+<p>还记得我们之前创建的虚拟网络交换机吗？这时候就需要用到它了。</p>
+<pre><code>minikube start --vm-driver=hyperv --hyperv-virtual-switch=k8svswitch
+</code></pre>
+<p>默认不显示错误信息，为了方便排查启动中的问题，我们还是开启日志输出。</p>
+<pre><code>minikube start --vm-driver=hyperv --hyperv-virtual-switch=k8svswitch --v=3 --alsologtostderr
+</code></pre>
+<p>默认需要2048Mb内存，如果不够我们需要<code>--memory 1024</code>指定一下更小的空间，当然我的机器10Gb的内存不可能不够，这个参数省略了~</p>
+<p><strong>管理员模式打开命令行</strong>，执行上面那条<code>minikube start ...</code>开头的命令。</p>
+<p>执行完成之后输入<code>kubectl cluster-info dump</code>，看到集群的大量详细信息表示安装成功~</p>
+<p>如果按照以上步骤仍不成功，可以参考国外网友的一篇文章</p>
+<p><a href="https://gibmirfred.de/2017/02/run-k8s-minikube-on-windows-10-with-hyper-v/">《Run k8s minikube on Windows 10 with Hyper-V》https://gibmirfred.de/2017/02/run-k8s-minikube-on-windows-10-with-hyper-v/</a></p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li><a href="#hyper-vwindows8%E4%BB%A5%E4%B8%8A%E7%9A%84%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%B7%B2%E5%AE%89%E8%A3%85">Hyper-V（Windows8以上的系统默认已安装）</a></li>
 </ul>
 </li>
 </ul>
@@ -140,7 +151,7 @@
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://www.luoboyu.com//atom.xml" target="_blank">RSS</a>
+  <a class="rss" href="https://www.luoboyu.com/atom.xml" target="_blank">RSS</a>
 </div>
 
 <script>
