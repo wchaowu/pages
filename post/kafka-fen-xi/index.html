@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kafka 分析 | 吴超武个人博客</title>
 <meta name="description" content="温故而知新" />
-<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569489113063">
+<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569489369654">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.luoboyu.com/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.luoboyu.com">
-  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569489113063" alt="">
+  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569489369654" alt="">
   </a>
   <h1 class="site-title">
     吴超武个人博客
@@ -83,11 +83,22 @@
                 3 min read
               </span>
               
+                <a href="https://www.luoboyu.com/tag/D43OOIGdx" class="post-tag">
+                  # kafka
+                </a>
+              
+                <a href="https://www.luoboyu.com/tag/RaqCFx6mdc" class="post-tag">
+                  # 大数据
+                </a>
+              
             </div>
+            
+              <img class="post-feature-image" src="https://www.luoboyu.com/post-images/kafka-fen-xi.png" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
                 <p>Kafka 作为一款基于磁盘存储的高吞吐消息中间件，常作为 log、event 等流式数据的通道，在流式计算领域也有丰富应用，下面简单分析其高吞吐、高性能的几点原因</p>
+<!-- more -->
 <h2 id="1-零拷贝">1、零拷贝</h2>
 <p>普通的数据传输一般涉及 read、write 两个系统调用，而 kafka 的 broker 传递数据给消费者使用零拷贝的技术，底层使用了 sendfile 的系统调用，减少了用户态与内核态的上下文切换和数据拷贝的次数，read、write 两次系统调用涉及 4 次的上下文切换和 4 次的数据拷贝才能从一端到另一端，而 sendfile 系统调用只需要 2 次的上下文切换和 3 次的数据拷贝，减少了两次的上下文切换和一次拷贝动作，善用零拷贝可以优化基于磁盘的分布式系统的数据传输</p>
 <h2 id="2-顺序写-page-cache">2、顺序写 + page cache</h2>
