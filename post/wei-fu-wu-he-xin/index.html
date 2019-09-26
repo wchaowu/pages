@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | 吴超武个人博客</title>
+<title>微服务核心 | 吴超武个人博客</title>
 <meta name="description" content="温故而知新" />
 <link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569489934518">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,41 +73,105 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              微服务核心
             </h2>
             <div class="post-info">
               <span>
-                2019-01-25
+                2018-08-09
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+                <ul>
+<li>Distributed/versioned configuration【分布式以及版本化的配置】</li>
+<li>Service registration and discovery【服务注册与发现】</li>
+<li>Routing【路由】</li>
+<li>Service-to-service calls【服务调用】</li>
+<li>Load balancing【负载均衡】</li>
+<li>Circuit Breakers【断路器】</li>
+<li>Distributed messaging【分布式消息】</li>
+</ul>
+<h3 id="spring-cloud-netflix">spring-cloud （Netflix）</h3>
+<ul>
+<li>服务的注册与发现（Eureka）</li>
+<li>服务消费者（rest+ribbon）</li>
+<li>服务消费者（Feign）</li>
+<li>断路器（Hystrix）</li>
+<li>路由网关zuul,Spring Cloud Gateway</li>
+<li>高可用的分布式配置中心(Spring Cloud Config)</li>
+<li>消息总线(Spring Cloud Bus)</li>
+<li>服务链路追踪(Spring Cloud Sleuth)</li>
+<li>断路器监控(Hystrix Dashboard)</li>
+<li>断路器聚合监控(Hystrix Turbine)</li>
+<li>Resilience4j 代替 Hystrix</li>
+<li>Hystrix Dashboard / Turbine替换为Micrometer + Monitoring System</li>
+<li>Spring Cloud Loadbalancer 代替Ribbon</li>
+<li>Spring Cloud Gateway 代替 Zuul</li>
+<li>Spring Boot external config + Spring Cloud Config代替 Archaius 1</li>
+</ul>
+<p><strong>后期zuul hystrix，Ribbon将停止更新</strong></p>
+<h3 id="apm应用程序性能监视和管理工具">APM（应用程序性能监视和管理）工具</h3>
+<ul>
+<li>Cat http://github.com/dianping/cat/</li>
+<li>Zipkin https://zipkin.io/</li>
+<li>Pinpoint https://github.com/naver/pinpoint/</li>
+<li>Apache SkyWalking https://github.com/apacheincubator-skywalking</li>
+</ul>
+<h3 id="spring-cloud-alibaba">Spring Cloud Alibaba</h3>
+<ul>
+<li>Sentinel</li>
+</ul>
+<blockquote>
+<p>把流量作为切入点，从流量控制、熔断降级、系统负载保等多个维度保护服务的稳定性。</p>
 </blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>记录工作点点滴滴</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>工作中一线码农，十年互联网企业工作者，资深架构师</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>编码，篮球</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>wchaowu#gmail.com</p>
+<ul>
+<li>Nacos</li>
+</ul>
+<blockquote>
+<p>一个更易于构建云原生应用的动态服务发现、配置管理和服务理平台* * * 。</p>
+</blockquote>
+<ul>
+<li>RocketMQ</li>
+</ul>
+<blockquote>
+<p>一款开源的分布式消息系统，基于高可用分布式集群技术提供低延时的、高可靠的消息发布与订阅服务。</p>
+</blockquote>
+<ul>
+<li>Seata</li>
+</ul>
+<blockquote>
+<p>阿里巴巴开源产品，一个易于使用的高性能微服务分布式事务决方案。</p>
+</blockquote>
+<ul>
+<li>Alibaba Cloud SchedulerX</li>
+</ul>
+<blockquote>
+<p>阿里中间件团队开发的一款分布式任调度产品，提供秒级、精准、高可靠、高可用的定时（基于 Cron 表式）任务调度服务。</p>
+</blockquote>
+<h3 id="elk">ELK</h3>
+<p>日志治理</p>
+<blockquote>
+<p>logback =&gt; kafka =&gt;logstash =&gt; elasticsearch =&gt; kibana</p>
+</blockquote>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li>
+<ul>
+<li><a href="#spring-cloud-netflix">spring-cloud （Netflix）</a></li>
+<li><a href="#apm%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E7%9B%91%E8%A7%86%E5%92%8C%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7">APM（应用程序性能监视和管理）工具</a></li>
+<li><a href="#spring-cloud-alibaba">Spring Cloud Alibaba</a></li>
+<li><a href="#elk">ELK</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -117,6 +181,15 @@
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://www.luoboyu.com/post/kafka-fen-xi">
+              <h3 class="post-title">
+                Kafka 分析
+              </h3>
+            </a>
+          </div>
         
 
         
