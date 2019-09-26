@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Minikube 使用 | 吴超武个人博客</title>
 <meta name="description" content="温故而知新" />
-<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569392177911">
+<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569488221800">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.luoboyu.com/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.luoboyu.com">
-  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569392177911" alt="">
+  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569488221800" alt="">
   </a>
   <h1 class="site-title">
     吴超武个人博客
@@ -77,10 +77,10 @@
             </h2>
             <div class="post-info">
               <span>
-                2018-12-12
+                2018-10-11
               </span>
               <span>
-                3 min read
+                7 min read
               </span>
               
                 <a href="https://www.luoboyu.com/tag/RsNNX0tvL" class="post-tag">
@@ -129,6 +129,86 @@ Minikube是什么？</p>
 <p>执行完成之后输入<code>kubectl cluster-info dump</code>，看到集群的大量详细信息表示安装成功~</p>
 <p>如果按照以上步骤仍不成功，可以参考国外网友的一篇文章</p>
 <p><a href="https://gibmirfred.de/2017/02/run-k8s-minikube-on-windows-10-with-hyper-v/">《Run k8s minikube on Windows 10 with Hyper-V》https://gibmirfred.de/2017/02/run-k8s-minikube-on-windows-10-with-hyper-v/</a></p>
+<p>1.1 MINIKUBE BASIC<br>
+Name	Command<br>
+minikube lifecycle	minikube delete, minikube start, minikube status, Link: minikube<br>
+Get minikube version	minikube version, Link: all minikube releases<br>
+mac install minikube	brew cask install minikube, brew cask reinstall minikube<br>
+Start minikube with different machine flavor	minikube start --memory 5120 --cpus=4<br>
+Start minikube with a specific k8s version	minikube start --kubernetes-version v1.11.0<br>
+Start minikube with more customizations	minikube start –kubernetes-version v1.11.0 –feature-gates=AdvancedAuditing=true<br>
+SSH to minikube vm	minikube ssh, ssh -i ~/.minikube/machines/minikube/id_rsa docker@192.168.99.100<br>
+Your local docker to use minikube dockerd	eval $(minikube docker-env), Then no need for docker push<br>
+Minikube check latest version	minikube update-check<br>
+Reference	Minikube CheatSheet, Kubernetes kind CheatSheet<br>
+Reference	Kubectl CheatSheet, Kubernetes Yaml<br>
+1.2 CHECK STATUS<br>
+Name	Command<br>
+Get minikube version	minikube version, Link: all minikube releases<br>
+Get cluster info	kubectl cluster-info<br>
+Get service info	minikube service <srv-name><br>
+Get dashboard	minikube dashboard<br>
+Get ip	minikube ip<br>
+Get minikube log	minikube logs<br>
+List addons	minikube addons list<br>
+1.3 MINIKUBE FOLDERS<br>
+Name	Command<br>
+Mount host OS’s folder to minikube VM	minikube mount /host-mount-path:/vm-mount-path<br>
+Folder of k8s.io/minikube-hostpath provisioner	/tmp/hostpath-provisioner, /tmp/hostpath_pv<br>
+Mount host OS’s folder to minikube VM	minikube mount /host-mount-path:/vm-mount-path<br>
+Critical minikube folder	/var/lib/localkube, /var/lib/docker, /data<br>
+Check minikube config in your host OS desktop	~/.minikube/machines/minikube/config.json<br>
+Minikube conf in local env	~/.minikube, ~/.kube<br>
+1.4 MINIKUBE ADVANCED<br>
+Name	Command<br>
+Install addon after creating minikube env	minikube addons enable heapster, kubectl top node<br>
+1.5 MINIKUBE CLI ONLINE HELP</p>
+<blockquote>
+<p>minikube version<br>
+minikube version: v0.31.0</p>
+</blockquote>
+<blockquote>
+<p>minikube --help<br>
+Minikube is a CLI tool that provisions and manages single-node Kubernetes clusters optimized for development workflows.</p>
+</blockquote>
+<p>Usage:<br>
+minikube [command]</p>
+<p>Available Commands:<br>
+addons         Modify minikube's kubernetes addons<br>
+cache          Add or delete an image from the local cache.<br>
+completion     Outputs minikube shell completion for the given shell (bash or zsh)<br>
+config         Modify minikube config<br>
+dashboard      Access the kubernetes dashboard running within the minikube cluster<br>
+delete         Deletes a local kubernetes cluster<br>
+docker-env     Sets up docker env variables; similar to '$(docker-machine env)'<br>
+help           Help about any command<br>
+ip             Retrieves the IP address of the running cluster<br>
+logs           Gets the logs of the running instance, used for debugging minikube, not user code<br>
+mount          Mounts the specified directory into minikube<br>
+profile        Profile sets the current minikube profile<br>
+service        Gets the kubernetes URL(s) for the specified service in your local cluster<br>
+ssh            Log into or run a command on a machine with SSH; similar to 'docker-machine ssh'<br>
+ssh-key        Retrieve the ssh identity key path of the specified cluster<br>
+start          Starts a local kubernetes cluster<br>
+status         Gets the status of a local kubernetes cluster<br>
+stop           Stops a running local kubernetes cluster<br>
+tunnel         tunnel makes services of type LoadBalancer accessible on localhost<br>
+update-check   Print current and latest version number<br>
+update-context Verify the IP address of the running cluster in kubeconfig.<br>
+version        Print the version of minikube</p>
+<p>Flags:<br>
+--alsologtostderr                  log to standard error as well as files<br>
+-b, --bootstrapper string              The name of the cluster bootstrapper that will set up the kubernetes cluster. (default &quot;kubeadm&quot;)<br>
+-h, --help                             help for minikube<br>
+--log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)<br>
+--log_dir string                   If non-empty, write log files in this directory<br>
+--logtostderr                      log to standard error instead of files<br>
+-p, --profile string                   The name of the minikube VM being used.<br>
+This can be modified to allow for multiple minikube instances to be run independently (default &quot;minikube&quot;)<br>
+--stderrthreshold severity         logs at or above this threshold go to stderr (default 2)<br>
+-v, --v Level                          log level for V logs<br>
+--vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging</p>
+<p>Use &quot;minikube [command] --help&quot; for more information about a command.</p>
 
               </div>
               <div class="toc-container">

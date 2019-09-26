@@ -1,22 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://www.luoboyu.com</id>
-    <title>吴超武个人博客</title>
-    <updated>2019-09-26T08:57:36.995Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://www.luoboyu.com"/>
-    <link rel="self" href="https://www.luoboyu.com/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://www.luoboyu.com/images/avatar.png</logo>
-    <icon>https://www.luoboyu.com/favicon.ico</icon>
-    <rights>All rights reserved 2019, 吴超武个人博客</rights>
-    <entry>
-        <title type="html"><![CDATA[kubernetes  常用的命令]]></title>
-        <id>https://www.luoboyu.com/post/kubernetes-chang-yong-de-ming-ling</id>
-        <link href="https://www.luoboyu.com/post/kubernetes-chang-yong-de-ming-ling">
-        </link>
-        <updated>2018-11-30T08:53:45.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="11-common-commands">1.1 Common Commands</h2>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>kubernetes  常用的命令 | 吴超武个人博客</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569488221800">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.luoboyu.com/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://www.luoboyu.com">
+  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569488221800" alt="">
+  </a>
+  <h1 class="site-title">
+    吴超武个人博客
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              kubernetes  常用的命令
+            </h2>
+            <div class="post-info">
+              <span>
+                2018-11-30
+              </span>
+              <span>
+                12 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="11-common-commands">1.1 Common Commands</h2>
 <table>
 <thead>
 <tr>
@@ -877,126 +948,107 @@
 <h2 id="120-more-resources">1.20 More Resources</h2>
 <p>https://kubernetes.io/docs/reference/kubectl/cheatsheet/</p>
 <p>https://codefresh.io/kubernetes-guides/kubernetes-cheat-sheet/</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Minikube 使用]]></title>
-        <id>https://www.luoboyu.com/post/hello-gridea</id>
-        <link href="https://www.luoboyu.com/post/hello-gridea">
-        </link>
-        <updated>2018-10-10T16:00:00.000Z</updated>
-        <content type="html"><![CDATA[<p>背景介绍<br>
-Minikube是什么？</p>
-<p><a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">Minikube</a>是一个能够在虚拟机中运行单节点Kubernetes集群的工具，它使得开发者可以在本地环境中进行开发和调试Kubernetes。推荐阿里封装的<a href="https://github.com/AliyunContainerService/minikube">minikube</a></p>
-<p>Kubernetes又是什么？</p>
-<p>Kubernetes是一个用来自动部署、伸缩、和管理容器化应用的开源系统。<br>
-容器又是什么？</p>
-<p>容器指的是运用虚拟化技术将不同应用和其所需的运行环境进行隔离的进程，其中Docker是最著名的开源容器软件。</p>
-<p><strong>容器又是什么？</strong></p>
-<p>容器指的是运用虚拟化技术将不同应用和其所需的运行环境进行隔离的进程，其中<a href="https://www.docker.com/what-docker#/overview">Docker</a>是最著名的开源容器软件。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
 <ul>
-<li>我有几个项目使用的不同Node.js版本，开发调试需要进行切换很不方便。——容器的虚拟运行环境可以解决</li>
-<li>每次部署都要重新安装依赖，而且不同环境依赖安装后可能出现问题。——打包成镜像，无需再安装依赖，秒级启动。</li>
-<li>我想创建几个同样的进程做负载均衡/高可用。——用Kubernetes创建容器副本。</li>
-<li>我希望我的进程在生产环境中挂掉或者被误杀之后自动重新启动。——用Kubernetes的自愈功能操作容器。</li>
-<li>根据不同机器的资源使用情况来分配进程。——用Kubernetes来调度容器。<br>
-…</li>
+<li><a href="#11-common-commands">1.1 Common Commands</a></li>
+<li><a href="#12-check-performance">1.2 Check Performance</a></li>
+<li><a href="#13-resources-deletion">1.3 Resources Deletion</a></li>
+<li><a href="#14-log-conf-files">1.4 Log &amp; Conf Files</a></li>
+<li><a href="#15-pod">1.5 Pod</a></li>
+<li><a href="#16-label-annontation">1.6 Label &amp; Annontation</a></li>
+<li><a href="#17-deployment-scale">1.7 Deployment &amp; Scale</a></li>
+<li><a href="#18-quota-limits-resource">1.8 Quota &amp; Limits &amp; Resource</a></li>
+<li><a href="#19-service">1.9 Service</a></li>
+<li><a href="#110-secrets">1.10 Secrets</a></li>
+<li><a href="#111-statefulset">1.11 StatefulSet</a></li>
+<li><a href="#112-volumes-volume-claims">1.12 Volumes &amp; Volume Claims</a></li>
+<li><a href="#113-events-metrics">1.13 Events &amp; Metrics</a></li>
+<li><a href="#114-node-maintenance">1.14 Node Maintenance</a></li>
+<li><a href="#115-namespace-security">1.15 Namespace &amp; Security</a></li>
+<li><a href="#116-network">1.16 Network</a></li>
+<li><a href="#117-patch">1.17 Patch</a></li>
+<li><a href="#118-extenstions">1.18 Extenstions</a>
+<ul>
+<li><a href="#1191-services-on-master-nodes">1.19.1 Services on Master Nodes</a></li>
+<li><a href="#1192-services-on-worker-nodes">1.19.2 Services on Worker Nodes</a></li>
+<li><a href="#1193-addons-pods-and-services-that-implement-cluster-features">1.19.3 Addons: pods and services that implement cluster features</a></li>
+<li><a href="#1194-tools">1.19.4 Tools</a></li>
 </ul>
-<h2 id="hyper-vwindows8以上的系统默认已安装">Hyper-V（Windows8以上的系统默认已安装）</h2>
-<p>首先<code>minikube start</code>会默认使用VirtualBox，但是我们用的是Hyper-V，所以需要加参数指定：</p>
-<pre><code>minikube start --vm-driver=hyperv
-</code></pre>
-<p>还记得我们之前创建的虚拟网络交换机吗？这时候就需要用到它了。</p>
-<pre><code>minikube start --vm-driver=hyperv --hyperv-virtual-switch=k8svswitch
-</code></pre>
-<p>默认不显示错误信息，为了方便排查启动中的问题，我们还是开启日志输出。</p>
-<pre><code>minikube start --vm-driver=hyperv --hyperv-virtual-switch=k8svswitch --v=3 --alsologtostderr
-</code></pre>
-<p>默认需要2048Mb内存，如果不够我们需要<code>--memory 1024</code>指定一下更小的空间，当然我的机器10Gb的内存不可能不够，这个参数省略了~</p>
-<p><strong>管理员模式打开命令行</strong>，执行上面那条<code>minikube start ...</code>开头的命令。</p>
-<p>执行完成之后输入<code>kubectl cluster-info dump</code>，看到集群的大量详细信息表示安装成功~</p>
-<p>如果按照以上步骤仍不成功，可以参考国外网友的一篇文章</p>
-<p><a href="https://gibmirfred.de/2017/02/run-k8s-minikube-on-windows-10-with-hyper-v/">《Run k8s minikube on Windows 10 with Hyper-V》https://gibmirfred.de/2017/02/run-k8s-minikube-on-windows-10-with-hyper-v/</a></p>
-<p>1.1 MINIKUBE BASIC<br>
-Name	Command<br>
-minikube lifecycle	minikube delete, minikube start, minikube status, Link: minikube<br>
-Get minikube version	minikube version, Link: all minikube releases<br>
-mac install minikube	brew cask install minikube, brew cask reinstall minikube<br>
-Start minikube with different machine flavor	minikube start --memory 5120 --cpus=4<br>
-Start minikube with a specific k8s version	minikube start --kubernetes-version v1.11.0<br>
-Start minikube with more customizations	minikube start –kubernetes-version v1.11.0 –feature-gates=AdvancedAuditing=true<br>
-SSH to minikube vm	minikube ssh, ssh -i ~/.minikube/machines/minikube/id_rsa docker@192.168.99.100<br>
-Your local docker to use minikube dockerd	eval $(minikube docker-env), Then no need for docker push<br>
-Minikube check latest version	minikube update-check<br>
-Reference	Minikube CheatSheet, Kubernetes kind CheatSheet<br>
-Reference	Kubectl CheatSheet, Kubernetes Yaml<br>
-1.2 CHECK STATUS<br>
-Name	Command<br>
-Get minikube version	minikube version, Link: all minikube releases<br>
-Get cluster info	kubectl cluster-info<br>
-Get service info	minikube service <srv-name><br>
-Get dashboard	minikube dashboard<br>
-Get ip	minikube ip<br>
-Get minikube log	minikube logs<br>
-List addons	minikube addons list<br>
-1.3 MINIKUBE FOLDERS<br>
-Name	Command<br>
-Mount host OS’s folder to minikube VM	minikube mount /host-mount-path:/vm-mount-path<br>
-Folder of k8s.io/minikube-hostpath provisioner	/tmp/hostpath-provisioner, /tmp/hostpath_pv<br>
-Mount host OS’s folder to minikube VM	minikube mount /host-mount-path:/vm-mount-path<br>
-Critical minikube folder	/var/lib/localkube, /var/lib/docker, /data<br>
-Check minikube config in your host OS desktop	~/.minikube/machines/minikube/config.json<br>
-Minikube conf in local env	~/.minikube, ~/.kube<br>
-1.4 MINIKUBE ADVANCED<br>
-Name	Command<br>
-Install addon after creating minikube env	minikube addons enable heapster, kubectl top node<br>
-1.5 MINIKUBE CLI ONLINE HELP</p>
-<blockquote>
-<p>minikube version<br>
-minikube version: v0.31.0</p>
-</blockquote>
-<blockquote>
-<p>minikube --help<br>
-Minikube is a CLI tool that provisions and manages single-node Kubernetes clusters optimized for development workflows.</p>
-</blockquote>
-<p>Usage:<br>
-minikube [command]</p>
-<p>Available Commands:<br>
-addons         Modify minikube's kubernetes addons<br>
-cache          Add or delete an image from the local cache.<br>
-completion     Outputs minikube shell completion for the given shell (bash or zsh)<br>
-config         Modify minikube config<br>
-dashboard      Access the kubernetes dashboard running within the minikube cluster<br>
-delete         Deletes a local kubernetes cluster<br>
-docker-env     Sets up docker env variables; similar to '$(docker-machine env)'<br>
-help           Help about any command<br>
-ip             Retrieves the IP address of the running cluster<br>
-logs           Gets the logs of the running instance, used for debugging minikube, not user code<br>
-mount          Mounts the specified directory into minikube<br>
-profile        Profile sets the current minikube profile<br>
-service        Gets the kubernetes URL(s) for the specified service in your local cluster<br>
-ssh            Log into or run a command on a machine with SSH; similar to 'docker-machine ssh'<br>
-ssh-key        Retrieve the ssh identity key path of the specified cluster<br>
-start          Starts a local kubernetes cluster<br>
-status         Gets the status of a local kubernetes cluster<br>
-stop           Stops a running local kubernetes cluster<br>
-tunnel         tunnel makes services of type LoadBalancer accessible on localhost<br>
-update-check   Print current and latest version number<br>
-update-context Verify the IP address of the running cluster in kubeconfig.<br>
-version        Print the version of minikube</p>
-<p>Flags:<br>
---alsologtostderr                  log to standard error as well as files<br>
--b, --bootstrapper string              The name of the cluster bootstrapper that will set up the kubernetes cluster. (default &quot;kubeadm&quot;)<br>
--h, --help                             help for minikube<br>
---log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)<br>
---log_dir string                   If non-empty, write log files in this directory<br>
---logtostderr                      log to standard error instead of files<br>
--p, --profile string                   The name of the minikube VM being used.<br>
-This can be modified to allow for multiple minikube instances to be run independently (default &quot;minikube&quot;)<br>
---stderrthreshold severity         logs at or above this threshold go to stderr (default 2)<br>
--v, --v Level                          log level for V logs<br>
---vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging</p>
-<p>Use &quot;minikube [command] --help&quot; for more information about a command.</p>
-]]></content>
-    </entry>
-</feed>
+</li>
+<li><a href="#120-more-resources">1.20 More Resources</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://www.luoboyu.com/post/hello-gridea">
+              <h3 class="post-title">
+                Minikube 使用
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://www.luoboyu.com/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
