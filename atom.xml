@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.luoboyu.com</id>
     <title>吴超武个人博客</title>
-    <updated>2019-09-26T09:16:47.126Z</updated>
+    <updated>2019-09-26T09:21:07.050Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.luoboyu.com"/>
     <link rel="self" href="https://www.luoboyu.com/atom.xml"/>
@@ -16,7 +16,15 @@
         <link href="https://www.luoboyu.com/post/kubernetes-chang-yong-de-ming-ling">
         </link>
         <updated>2018-11-30T08:53:45.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="11-common-commands">1.1 Common Commands</h2>
+        <summary type="html"><![CDATA[<p>kubectl是Kubernetes集群的命令行工具，通过kubectl能够对集群本身进行管理，并能够在集群上进行容器化应用的安装部署<br>
+kubelet：负责pod对应的容器创建、启停等任务，同时与master 节点密切协作，实现集群管理的基本功能<br>
+kube-proxy:实现kubernetes Service 的通信与负载均衡机制的重要组件</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>kubectl是Kubernetes集群的命令行工具，通过kubectl能够对集群本身进行管理，并能够在集群上进行容器化应用的安装部署<br>
+kubelet：负责pod对应的容器创建、启停等任务，同时与master 节点密切协作，实现集群管理的基本功能<br>
+kube-proxy:实现kubernetes Service 的通信与负载均衡机制的重要组件</p>
+<!-- more -->
+<h2 id="11-common-commands">1.1 Common Commands</h2>
 <table>
 <thead>
 <tr>
@@ -885,9 +893,14 @@
         <link href="https://www.luoboyu.com/post/hello-gridea">
         </link>
         <updated>2018-10-10T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>背景介绍<br>
+Minikube是什么？</p>
+<p><a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">Minikube</a>是一个能够在虚拟机中运行单节点Kubernetes集群的工具，它使得开发者可以在本地环境中进行开发和调试Kubernetes。推荐阿里封装的<a href="https://github.com/AliyunContainerService/minikube">minikube</a></p>
+]]></summary>
         <content type="html"><![CDATA[<p>背景介绍<br>
 Minikube是什么？</p>
 <p><a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">Minikube</a>是一个能够在虚拟机中运行单节点Kubernetes集群的工具，它使得开发者可以在本地环境中进行开发和调试Kubernetes。推荐阿里封装的<a href="https://github.com/AliyunContainerService/minikube">minikube</a></p>
+<!-- more -->
 <p>Kubernetes又是什么？</p>
 <p>Kubernetes是一个用来自动部署、伸缩、和管理容器化应用的开源系统。<br>
 容器又是什么？</p>
