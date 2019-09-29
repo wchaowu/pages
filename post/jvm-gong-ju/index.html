@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>吴超武个人博客</title>
+<title>JVM 工具 | 吴超武个人博客</title>
 <meta name="description" content="业精于勤荒于嬉，行成于思毁于随" />
 <link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569758402234">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -70,99 +70,24 @@
   </div>
 </div>
 
-    
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://www.luoboyu.com/post/kubernetes-chang-yong-de-ming-ling">
-        <h2 class="post-title">kubernetes  常用的命令</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2018-11-30
-        </span>
-        <span>
-          12 min read
-        </span>
-        
-      </div>
-      
-      <div class="post-abstract">
-        <p>kubectl是Kubernetes集群的命令行工具，通过kubectl能够对集群本身进行管理，并能够在集群上进行容器化应用的安装部署<br>
-kubelet：负责pod对应的容器创建、启停等任务，同时与master 节点密切协作，实现集群管理的基本功能<br>
-kube-proxy:实现kubernetes Service 的通信与负载均衡机制的重要组件</p>
-
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://www.luoboyu.com/post/hello-gridea">
-        <h2 class="post-title">Minikube 使用</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2018-10-11
-        </span>
-        <span>
-          7 min read
-        </span>
-        
-          <a href="https://www.luoboyu.com/tag/RsNNX0tvL" class="post-tag">
-            # kubernetes
-          </a>
-        
-          <a href="https://www.luoboyu.com/tag/1KydVE-hr8" class="post-tag">
-            # 微服务
-          </a>
-        
-      </div>
-      
-        <a href="https://www.luoboyu.com/post/hello-gridea" class="post-feature-image" style="background-image: url('https://www.luoboyu.com/post-images/hello-gridea.png')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>背景介绍<br>
-Minikube是什么？</p>
-<p><a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">Minikube</a>是一个能够在虚拟机中运行单节点Kubernetes集群的工具，它使得开发者可以在本地环境中进行开发和调试Kubernetes。推荐阿里封装的<a href="https://github.com/AliyunContainerService/minikube">minikube</a></p>
-
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://www.luoboyu.com/post/wei-fu-wu-he-xin">
-        <h2 class="post-title">Java微服务核心</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2018-08-09
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://www.luoboyu.com/post/jvm-gong-ju">
-        <h2 class="post-title">JVM 工具</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2016-04-04
-        </span>
-        <span>
-          8 min read
-        </span>
-        
-      </div>
-      
-      <div class="post-abstract">
-        <h2 id="jps">jps</h2>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              JVM 工具
+            </h2>
+            <div class="post-info">
+              <span>
+                2016-04-04
+              </span>
+              <span>
+                8 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="jps">jps</h2>
 <p>1、用来查看基于HotSpot JVM里面所有进程的具体状态, 包括进程ID，进程启动的路径等等，用来显示本地有权限的java进程，可以查看本地运行着几个java程序</p>
 <p>2、命令格式</p>
 <p><code>jps [ options ] [ hostid ]</code></p>
@@ -278,50 +203,41 @@ export DISPLAY=:0.0<br>
 jvisualvm同jconsole都是一个基于图形化界面的、可以查看本地及远程的JAVA GUI监控工具，Jvisualvm同jconsole的使用方式一样，直接在命令行打入Jvisualvm即可启动，不过Jvisualvm相比，界面更美观一些，数据更实时。</p>
 <p>##、Jhat<br>
 jhat用于对JAVA heap进行离线分析的工具，他可以对不同虚拟机中导出的heap信息文件进行分析，如LINUX上导出的文件可以拿到WINDOWS上进行分析，可以查找诸如内存方面的问题，不过jhat和MAT比较起来，就没有MAT那么直观了，MAT是以图形界面的方式展现结果。</p>
+<!-- more -->
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://www.luoboyu.com/post/kafka-fen-xi">
-        <h2 class="post-title">Kafka 分析</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2015-01-26
-        </span>
-        <span>
-          3 min read
-        </span>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#jps">jps</a></li>
+<li><a href="#jstat">jstat</a></li>
+<li><a href="#jstack">jstack</a></li>
+<li><a href="#jmap">jmap</a></li>
+<li><a href="#jinfo">jinfo</a></li>
+<li><a href="#jconsole%E5%92%8Cjvisualvm">jconsole和jvisualvm</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
         
-          <a href="https://www.luoboyu.com/tag/D43OOIGdx" class="post-tag">
-            # kafka
-          </a>
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://www.luoboyu.com/post/kafka-fen-xi">
+              <h3 class="post-title">
+                Kafka 分析
+              </h3>
+            </a>
+          </div>
         
-          <a href="https://www.luoboyu.com/tag/RaqCFx6mdc" class="post-tag">
-            # 大数据
-          </a>
+
         
-      </div>
-      
-        <a href="https://www.luoboyu.com/post/kafka-fen-xi" class="post-feature-image" style="background-image: url('https://www.luoboyu.com/post-images/kafka-fen-xi.png')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>Kafka 作为一款基于磁盘存储的高吞吐消息中间件，常作为 log、event 等流式数据的通道，在流式计算领域也有丰富应用，下面简单分析其高吞吐、高性能的几点原因</p>
 
-      </div>
-    </article>
-  
-</div>
-
-    
-        <div class="pagination-container">
-  
-  
-</div>
-
-    
         <div class="site-footer">
   Powered by <a href="https://github.com/wchaowu" target="_blank">wchaowu#gmail.com</a> | 
   <a class="rss" href="https://www.luoboyu.com/atom.xml" target="_blank">RSS</a>
