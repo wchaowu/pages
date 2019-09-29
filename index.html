@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>吴超武个人博客</title>
 <meta name="description" content="业精于勤荒于嬉，行成于思毁于随" />
-<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569758402234">
+<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569758801356">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.luoboyu.com/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.luoboyu.com">
-  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569758402234" alt="">
+  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569758801356" alt="">
   </a>
   <h1 class="site-title">
     吴超武个人博客
@@ -75,7 +75,7 @@
   
     <article class="post">
       <a href="https://www.luoboyu.com/post/kubernetes-chang-yong-de-ming-ling">
-        <h2 class="post-title">kubernetes  常用的命令</h2>
+        <h2 class="post-title">kubectl  常用的命令</h2>
       </a>
       <div class="post-info">
         <span>
@@ -149,135 +149,26 @@ Minikube是什么？</p>
   
     <article class="post">
       <a href="https://www.luoboyu.com/post/jvm-gong-ju">
-        <h2 class="post-title">JVM 工具</h2>
+        <h2 class="post-title">JVM 常用的工具</h2>
       </a>
       <div class="post-info">
         <span>
           2016-04-04
         </span>
         <span>
-          8 min read
+          9 min read
         </span>
+        
+          <a href="https://www.luoboyu.com/tag/IntCR6n1m" class="post-tag">
+            # JVM
+          </a>
         
       </div>
       
       <div class="post-abstract">
-        <h2 id="jps">jps</h2>
-<p>1、用来查看基于HotSpot JVM里面所有进程的具体状态, 包括进程ID，进程启动的路径等等，用来显示本地有权限的java进程，可以查看本地运行着几个java程序</p>
-<p>2、命令格式</p>
-<p><code>jps [ options ] [ hostid ]</code></p>
-<p>3、常用参数说明<br>
--m 输出传递给main方法的参数，如果是内嵌的JVM则输出为null。<br>
--l 输出应用程序主类的完整包名，或者是应用程序JAR文件的完整路径。<br>
--v 输出传给JVM的参数。</p>
-<h2 id="jstat">jstat</h2>
-<p>jstat工具特别强大，有众多的可选项，详细查看堆内各个部分的使用量，以及加载类的数量。使用时，需加上查看进程的进程id，和所选参数。<br>
-它主要是用来显示GC及PermGen相关的信息，否则其中即使你会使用jstat这个命令</p>
-<p>2、命令格式<br>
-<code>jstat [ generalOption | outputOptions vmid [interval[s|ms] [count]] ]</code></p>
-<p>3、参数说明<br>
-1）、generalOption：单个的常用的命令行选项，如-help, -options, 或 -version。<br>
-2）、outputOptions：一个或多个输出选项，由单个的statOption选项组件，可以-t, -h, and -J选项配合使用。<br>
-statOption：<br>
--class Option<br>
--compiler Option<br>
--gc Option<br>
--gccapacity Option<br>
--gccause Option<br>
--gcnew Option<br>
--gcnewcapacity Option<br>
--gcold Option<br>
--gcoldcapacity Option<br>
--gcpermcapacity Option<br>
--gcutil Option<br>
--printcompilation Option</p>
-<p>选项了，因为他能够给我们展示大致的GC信息。<br>
-Option：指的是vmid、显示间隔时间及间隔次数等<br>
-vmid    — VM的进程号，即当前运行的java进程号<br>
-interval– 间隔时间，单位为秒或者毫秒<br>
-count   — 打印次数，如果缺省则打印无数次<br>
-3）、jstat命令输出参数说明<br>
-S0  — Heap上的 Survivor space 0 区已使用空间的百分比<br>
-S0C：S0当前容量的大小<br>
-S0U：S0已经使用的大小<br>
-S1  — Heap上的 Survivor space 1 区已使用空间的百分比<br>
-S1C：S1当前容量的大小<br>
-S1U：S1已经使用的大小<br>
-E   — Heap上的 Eden space 区已使用空间的百分比<br>
-EC：Eden space当前容量的大小<br>
-EU：Eden space已经使用的大小<br>
-O   — Heap上的 Old space 区已使用空间的百分比<br>
-OC：Old space当前容量的大小<br>
-OU：Old space已经使用的大小<br>
-P   — Perm space 区已使用空间的百分比<br>
-OC：Perm space当前容量的大小<br>
-OU：Perm space已经使用的大小<br>
-YGC — 从应用程序启动到采样时发生 Young GC 的次数<br>
-YGCT– 从应用程序启动到采样时 Young GC 所用的时间(单位秒)<br>
-FGC — 从应用程序启动到采样时发生 Full GC 的次数<br>
-FGCT– 从应用程序启动到采样时 Full GC 所用的时间(单位秒)<br>
-GCT — 从应用程序启动到采样时用于垃圾回收的总时间(单位秒)，它的值等于YGC+FGC<br>
-注：由于该工具参数过多，不再进行给出测试结果。</p>
-<h2 id="jstack">jstack</h2>
-<p>1、介绍<br>
-jstack用于打印出给定的java进程ID或core file或远程调试服务的Java堆栈信息，如果是在64位机器上，需要指定选项&quot;-J-d64&quot;，Windows的jstack使用方式只支持以下的这种方式：<br>
-jstack [-l] pid<br>
-如果java程序崩溃生成core文件，jstack工具可以用来获得core文件的java stack和native stack的信息，从而可以轻松地知道java程序是如何崩溃和在程序何处发生问题。另外，jstack工具还可以附属到正在运行的java程序中，看到当时运行的java程序的java stack和native stack的信息, 如果现在运行的java程序呈现hung的状态，jstack是非常有用的。</p>
-<p>2、命令格式<br>
-jstack [ option ] pid<br>
-jstack [ option ] executable core<br>
-jstack [ option ] [server-id@]remote-hostname-or-IP</p>
-<p>3、常用参数说明<br>
-1)、options：<br>
-executable Java executable from which the core dump was produced.<br>
-(可能是产生core dump的java可执行程序)<br>
-core 将被打印信息的core dump文件<br>
-remote-hostname-or-IP 远程debug服务的主机名或ip<br>
-server-id 唯一id,假如一台主机上多个远程debug服务<br>
-2）、基本参数：<br>
--F当’jstack [-l] pid’没有相应的时候强制打印栈信息<br>
--l长列表. 打印关于锁的附加信息,例如属于java.util.concurrent的ownable synchronizers列表.<br>
--m打印java和native c/c++框架的所有栈信息.<br>
--h | -help打印帮助信息<br>
-pid 需要被打印配置信息的java进程id,可以用jps查询.</p>
-<h2 id="jmap">jmap</h2>
-<p>1、介绍<br>
-打印出某个java进程（使用pid）内存内的，所有对象的情况（如：产生那些对象，及其数量）。<br>
-可以输出所有内存中对象的工具，甚至可以将VM 中的heap，以二进制输出成文本。使用方法 jmap -histo pid。如果连用SHELL jmap -histo pid&gt;a.log可以将其保存到文本中去，在一段时间后，使用文本对比工具，可以对比出GC回收了哪些对象。jmap -dump:format=b,file=outfile 3024可以将3024进程的内存heap输出出来到outfile文件里，再配合MAT（内存分析工具(Memory Analysis Tool）或与jhat (Java Heap Analysis Tool)一起使用，能够以图像的形式直观的展示当前内存是否有问题。<br>
-64位机上使用需要使用如下方式：<br>
-jmap -J-d64 -heap pid</p>
-<p>2、命令格式<br>
-SYNOPSIS<br>
-jmap [ option ] pid<br>
-jmap [ option ] executable core<br>
-jmap [ option ] [server-id@]remote-hostname-or-IP</p>
-<p>3、参数说明<br>
-1)、options：<br>
-executable Java executable from which the core dump was produced.<br>
-(可能是产生core dump的java可执行程序)<br>
-core 将被打印信息的core dump文件<br>
-remote-hostname-or-IP 远程debug服务的主机名或ip<br>
-server-id 唯一id,假如一台主机上多个远程debug服务<br>
-2）、基本参数：<br>
--dump:[live,]format=b,file=<filename> 使用hprof二进制形式,输出jvm的heap内容到文件=. live子选项是可选的，假如指定live选项,那么只输出活的对象到文件.<br>
--finalizerinfo 打印正等候回收的对象的信息.<br>
--heap 打印heap的概要信息，GC使用的算法，heap的配置及wise heap的使用情况.<br>
--histo[:live] 打印每个class的实例数目,内存占用,类全名信息. VM的内部类名字开头会加上前缀”*”. 如果live子参数加上后,只统计活的对象数量.<br>
--permstat 打印classload和jvm heap长久层的信息. 包含每个classloader的名字,活泼性,地址,父classloader和加载的class数量. 另外,内部String的数量和占用内存数也会打印出来.<br>
--F 强迫.在pid没有相应的时候使用-dump或者-histo参数. 在这个模式下,live子参数无效.<br>
--h | -help 打印辅助信息<br>
--J 传递参数给jmap启动的jvm.<br>
-pid 需要被打印配相信息的java进程id,创业与打工的区别 - 博文预览,可以用jps查问.<br>
-注：平时该命令我是使用最多的。</p>
-<h2 id="jinfo">jinfo</h2>
-<p>jinfo可以输出并修改运行时的java 进程的opts。用处比较简单，用于输出JAVA系统参数及命令行参数。</p>
-<h2 id="jconsole和jvisualvm">jconsole和jvisualvm</h2>
-<p>jconsole:一个java GUI监视工具，可以以图表化的形式显示各种数据。并可通过远程连接监视远程的服务器VM。用java写的GUI程序，用来监控VM，并可监控远程的VM，非常易用，而且功能非常强。命令行里打 jconsole，选则进程就可以了。<br>
-需要注意的就是在运行jconsole之前，必须要先设置环境变量DISPLAY，否则会报错误，Linux下设置环境变量如下：<br>
-export DISPLAY=:0.0<br>
-jvisualvm同jconsole都是一个基于图形化界面的、可以查看本地及远程的JAVA GUI监控工具，Jvisualvm同jconsole的使用方式一样，直接在命令行打入Jvisualvm即可启动，不过Jvisualvm相比，界面更美观一些，数据更实时。</p>
-<p>##、Jhat<br>
-jhat用于对JAVA heap进行离线分析的工具，他可以对不同虚拟机中导出的heap信息文件进行分析，如LINUX上导出的文件可以拿到WINDOWS上进行分析，可以查找诸如内存方面的问题，不过jhat和MAT比较起来，就没有MAT那么直观了，MAT是以图形界面的方式展现结果。</p>
+        <p>开启jmx参数</p>
+<p><code>JAVA_OPTS=&quot;-Djava.rmi.server.hostname=192.168.53.53 -Dcom.sun.management.jmxremote.port=11000 -Dcom.sun.management.jmxremote.rmi.port=11000 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></p>
+<p>打开jconsole连接tomcat进程,无需输入 用户名/口令</p>
 
       </div>
     </article>

@@ -2,9 +2,9 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>JVM 工具 | 吴超武个人博客</title>
+<title>JVM 常用的工具 | 吴超武个人博客</title>
 <meta name="description" content="业精于勤荒于嬉，行成于思毁于随" />
-<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569758402234">
+<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1569758801356">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.luoboyu.com/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.luoboyu.com">
-  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569758402234" alt="">
+  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1569758801356" alt="">
   </a>
   <h1 class="site-title">
     吴超武个人博客
@@ -73,21 +73,29 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              JVM 工具
+              JVM 常用的工具
             </h2>
             <div class="post-info">
               <span>
                 2016-04-04
               </span>
               <span>
-                8 min read
+                9 min read
               </span>
+              
+                <a href="https://www.luoboyu.com/tag/IntCR6n1m" class="post-tag">
+                  # JVM
+                </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="jps">jps</h2>
+                <p>开启jmx参数</p>
+<p><code>JAVA_OPTS=&quot;-Djava.rmi.server.hostname=192.168.53.53 -Dcom.sun.management.jmxremote.port=11000 -Dcom.sun.management.jmxremote.rmi.port=11000 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></p>
+<p>打开jconsole连接tomcat进程,无需输入 用户名/口令</p>
+<!-- more -->
+<h2 id="jps">jps</h2>
 <p>1、用来查看基于HotSpot JVM里面所有进程的具体状态, 包括进程ID，进程启动的路径等等，用来显示本地有权限的java进程，可以查看本地运行着几个java程序</p>
 <p>2、命令格式</p>
 <p><code>jps [ options ] [ hostid ]</code></p>
