@@ -1,0 +1,276 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>spring boot 整合elk  | 吴超武个人博客</title>
+<meta name="description" content="业精于勤荒于嬉，行成于思毁于随" />
+<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1572852094192">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.luoboyu.com/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://www.luoboyu.com">
+  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1572852094192" alt="">
+  </a>
+  <h1 class="site-title">
+    吴超武个人博客
+  </h1>
+  <p class="site-description">
+    业精于勤荒于嬉，行成于思毁于随
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              spring boot 整合elk 
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-01-27
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>修改 /etc/logstash/conf.d/02-beats-input.conf</p>
+<pre><code>input {
+
+   tcp {
+
+       port =&gt; 5044
+
+        codec =&gt; json_lines
+
+    }
+
+}
+
+output{
+   elasticsearch {
+   hosts =&gt; [&quot;localhost:9200&quot;]
+    #指定索引名字
+                index =&gt; &quot;applog&quot;
+   }
+
+}
+</code></pre>
+<p>创建工程springboot-elk ，并使用logback 记录日志。</p>
+<pre><code class="language-xml">  &lt;!-- logback --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+            &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;net.logstash.logback&lt;/groupId&gt;
+            &lt;artifactId&gt;logstash-logback-encoder&lt;/artifactId&gt;
+            &lt;version&gt;5.2&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<h3 id="3-logback-springxml">3. logback-spring.xml</h3>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!--该日志将日志级别不同的log信息保存到不同的文件中 --&gt;&lt;configuration&gt;
+    &lt;include resource=&quot;org/springframework/boot/logging/logback/defaults.xml&quot; /&gt;
+
+    &lt;springProperty scope=&quot;context&quot; name=&quot;springAppName&quot;
+                    source=&quot;spring.application.name&quot; /&gt;
+
+    &lt;!-- 日志在工程中的输出位置 --&gt;
+    &lt;property name=&quot;LOG_FILE&quot; value=&quot;${BUILD_FOLDER:-build}/${springAppName}&quot; /&gt;
+
+    &lt;!-- 控制台的日志输出样式 --&gt;
+    &lt;property name=&quot;CONSOLE_LOG_PATTERN&quot;
+              value=&quot;%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}&quot; /&gt;
+
+    &lt;!-- 控制台输出 --&gt;
+    &lt;appender name=&quot;console&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+        &lt;filter class=&quot;ch.qos.logback.classic.filter.ThresholdFilter&quot;&gt;
+            &lt;level&gt;INFO&lt;/level&gt;
+        &lt;/filter&gt;
+        &lt;!-- 日志输出编码 --&gt;
+        &lt;encoder&gt;
+            &lt;pattern&gt;${CONSOLE_LOG_PATTERN}&lt;/pattern&gt;
+            &lt;charset&gt;utf8&lt;/charset&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+
+    &lt;!-- 为logstash输出的JSON格式的Appender --&gt;
+    &lt;appender name=&quot;logstash&quot;
+              class=&quot;net.logstash.logback.appender.LogstashTcpSocketAppender&quot;&gt;
+        &lt;destination&gt;127.0.0.1:5044&lt;/destination&gt;
+        &lt;!-- 日志输出编码 --&gt;
+        &lt;encoder
+                class=&quot;net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder&quot;&gt;
+            &lt;providers&gt;
+                &lt;timestamp&gt;
+                    &lt;timeZone&gt;UTC&lt;/timeZone&gt;
+                &lt;/timestamp&gt;
+                &lt;pattern&gt;
+                    &lt;pattern&gt;
+                        {
+                        &quot;severity&quot;: &quot;%level&quot;,
+                        &quot;service&quot;: &quot;${springAppName:-}&quot;,
+                        &quot;trace&quot;: &quot;%X{X-B3-TraceId:-}&quot;,
+                        &quot;span&quot;: &quot;%X{X-B3-SpanId:-}&quot;,
+                        &quot;exportable&quot;: &quot;%X{X-Span-Export:-}&quot;,
+                        &quot;pid&quot;: &quot;${PID:-}&quot;,
+                        &quot;thread&quot;: &quot;%thread&quot;,
+                        &quot;class&quot;: &quot;%logger{40}&quot;,
+                        &quot;rest&quot;: &quot;%message&quot;
+                        }                                        &lt;/pattern&gt;
+                &lt;/pattern&gt;
+            &lt;/providers&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+
+    &lt;!-- 日志输出级别 --&gt;
+    &lt;root level=&quot;INFO&quot;&gt;
+        &lt;appender-ref ref=&quot;console&quot; /&gt;
+        &lt;appender-ref ref=&quot;logstash&quot; /&gt;
+    &lt;/root&gt;&lt;/configuration&gt;
+</code></pre>
+<h2 id="三-配置-pattern">三、配置 pattern</h2>
+<p>配置 pattern 输入*，匹配所有数据。</p>
+<figure data-type="image" tabindex="1"><img src="https://mmbiz.qpic.cn/mmbiz_png/6tfIKgjKHmQytAOR40L4RTdo0fOIETxPIcHIqJIp9fjbtM7pYfFY8YibIxeScI335LlWSxmbQics9ltkGyiaZqAnQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></figure>
+<p>选择时间@timestamp，这样数据展示会以时间排序</p>
+<figure data-type="image" tabindex="2"><img src="https://mmbiz.qpic.cn/mmbiz_png/6tfIKgjKHmQytAOR40L4RTdo0fOIETxPeE3yJKaETkibojVmqcvicLO0a1V7LxcDDPLYZnlqiaeFEK85m6x83GvUA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></figure>
+<p>好了 ，点击discover，就可以看到我们springboot-elk项目的日志信息了。</p>
+<figure data-type="image" tabindex="3"><img src="https://mmbiz.qpic.cn/mmbiz_png/6tfIKgjKHmQytAOR40L4RTdo0fOIETxPUD4fiaQNtU93IMaMJqZxd5bNGeZupDqyS67XOuVOOPBIsO9hgjshr0Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#3-logback-springxml">3. logback-spring.xml</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E9%85%8D%E7%BD%AE-pattern">三、配置 pattern</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://www.luoboyu.com/post/wei-fu-wu-he-xin">
+              <h3 class="post-title">
+                Java微服务核心
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/wchaowu" target="_blank">wchaowu#gmail.com</a> | 
+  <a class="rss" href="https://www.luoboyu.com/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
