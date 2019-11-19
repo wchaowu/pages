@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spring boot 整合elk  | 吴超武个人博客</title>
 <meta name="description" content="业精于勤荒于嬉，行成于思毁于随" />
-<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1572852094192">
+<link rel="shortcut icon" href="https://www.luoboyu.com/favicon.ico?v=1574153484312">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.luoboyu.com/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.luoboyu.com">
-  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1572852094192" alt="">
+  <img class="avatar" src="https://www.luoboyu.com/images/avatar.png?v=1574153484312" alt="">
   </a>
   <h1 class="site-title">
     吴超武个人博客
@@ -80,14 +80,16 @@
                 2017-01-27
               </span>
               <span>
-                4 min read
+                7 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>修改 /etc/logstash/conf.d/02-beats-input.conf</p>
+                <p>一般在项目日志数据少的时候，我们直接用logback到logstash就可以，就没必要用kakfa，当然nginx日志和mysql的日志收集我们也没必要直接用logstash而是用filebeat轻量级收集之后给 logstash</p>
+<!-- more -->
+<p>修改 /etc/logstash/conf.d/02-beats-input.conf</p>
 <pre><code>input {
 
    tcp {
@@ -99,7 +101,6 @@
     }
 
 }
-
 output{
    elasticsearch {
    hosts =&gt; [&quot;localhost:9200&quot;]
@@ -123,14 +124,20 @@ output{
         &lt;/dependency&gt;
 </code></pre>
 <h3 id="3-logback-springxml">3. logback-spring.xml</h3>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!--该日志将日志级别不同的log信息保存到不同的文件中 --&gt;&lt;configuration&gt;
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!--该日志将日志级别不同的log信息保存到不同的文件中 --&gt;
+&lt;configuration&gt;
     &lt;include resource=&quot;org/springframework/boot/logging/logback/defaults.xml&quot; /&gt;
 
-    &lt;springProperty scope=&quot;context&quot; name=&quot;springAppName&quot;
-                    source=&quot;spring.application.name&quot; /&gt;
+    &lt;springProperty scope=&quot;context&quot; name=&quot;springAppName&quot;  source=&quot;spring.application.name&quot; /&gt;
 
+    &lt;!-- 本地输出日志格式 --&gt;
+    &lt;property name=&quot;pattern&quot; value=&quot;${springAppName} %d %-5level [%X{ctxLogId}][%thread] %logger{5}.%M[%L] - %msg%n&quot;/&gt;
+
+    &lt;!-- 当时的运行环境 --&gt;
+    &lt;springProperty scope=&quot;context&quot; name=&quot;env&quot;    source=&quot;spring.profiles.active&quot; /&gt;
     &lt;!-- 日志在工程中的输出位置 --&gt;
-    &lt;property name=&quot;LOG_FILE&quot; value=&quot;${BUILD_FOLDER:-build}/${springAppName}&quot; /&gt;
+    &lt;property name=&quot;LOG_FILE&quot; value=&quot;/data/logs/${springAppName}&quot; /&gt;
 
     &lt;!-- 控制台的日志输出样式 --&gt;
     &lt;property name=&quot;CONSOLE_LOG_PATTERN&quot;
@@ -148,10 +155,61 @@ output{
         &lt;/encoder&gt;
     &lt;/appender&gt;
 
+    &lt;!--输出到文件--&gt;
+    &lt;appender name=&quot;INFO_FILE&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;
+        &lt;!-- 正在记录的日志文件的路径及文件名 --&gt;
+        &lt;file&gt;${log.path}/${log.name}_info.log&lt;/file&gt;
+        &lt;!--日志文件输出格式--&gt;
+        &lt;encoder&gt;
+            &lt;pattern&gt;${pattern}&lt;/pattern&gt;
+        &lt;/encoder&gt;
+        &lt;!-- 日志记录器的滚动策略，按日期，按大小记录 --&gt;
+        &lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;
+            &lt;!-- 每天日志归档路径以及格式 --&gt;
+            &lt;fileNamePattern&gt;${log.path}/${log.name}_info.log.%d{yyyy-MM-dd}-%i.log&lt;/fileNamePattern&gt;
+            &lt;timeBasedFileNamingAndTriggeringPolicy class=&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;&gt;
+                &lt;maxFileSize&gt;200MB&lt;/maxFileSize&gt;
+            &lt;/timeBasedFileNamingAndTriggeringPolicy&gt;
+            &lt;!--日志文件保留天数--&gt;
+            &lt;maxHistory&gt;10&lt;/maxHistory&gt;
+        &lt;/rollingPolicy&gt;
+        &lt;!-- 此日志文件只记录info级别的 --&gt;
+        &lt;filter class=&quot;ch.qos.logback.classic.filter.LevelFilter&quot;&gt;
+            &lt;level&gt;info&lt;/level&gt;
+            &lt;onMatch&gt;ACCEPT&lt;/onMatch&gt;
+            &lt;onMismatch&gt;DENY&lt;/onMismatch&gt;
+        &lt;/filter&gt;
+    &lt;/appender&gt;
+
+    &lt;!-- 时间滚动输出 level为 ERROR 日志 --&gt;
+    &lt;appender name=&quot;ERROR_FILE&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;
+        &lt;!-- 正在记录的日志文件的路径及文件名 --&gt;
+        &lt;file&gt;${log.path}/${log.name}_error.log&lt;/file&gt;
+        &lt;!--日志文件输出格式--&gt;
+        &lt;encoder&gt;
+            &lt;pattern&gt;${pattern}&lt;/pattern&gt;
+        &lt;/encoder&gt;
+        &lt;!-- 日志记录器的滚动策略，按日期，按大小记录 --&gt;
+        &lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;
+            &lt;fileNamePattern&gt;${log.path}/${log.name}_error.log.%d{yyyy-MM-dd}-%i.log&lt;/fileNamePattern&gt;
+            &lt;timeBasedFileNamingAndTriggeringPolicy class=&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;&gt;
+                &lt;maxFileSize&gt;200MB&lt;/maxFileSize&gt;
+            &lt;/timeBasedFileNamingAndTriggeringPolicy&gt;
+            &lt;!--日志文件保留天数--&gt;
+            &lt;maxHistory&gt;10&lt;/maxHistory&gt;
+        &lt;/rollingPolicy&gt;
+        &lt;!-- 此日志文件只记录ERROR级别的 --&gt;
+        &lt;filter class=&quot;ch.qos.logback.classic.filter.LevelFilter&quot;&gt;
+            &lt;level&gt;ERROR&lt;/level&gt;
+            &lt;onMatch&gt;ACCEPT&lt;/onMatch&gt;
+            &lt;onMismatch&gt;DENY&lt;/onMismatch&gt;
+        &lt;/filter&gt;
+    &lt;/appender&gt;
+
     &lt;!-- 为logstash输出的JSON格式的Appender --&gt;
     &lt;appender name=&quot;logstash&quot;
               class=&quot;net.logstash.logback.appender.LogstashTcpSocketAppender&quot;&gt;
-        &lt;destination&gt;127.0.0.1:5044&lt;/destination&gt;
+        &lt;destination&gt;127.0.0.1:4567&lt;/destination&gt;
         &lt;!-- 日志输出编码 --&gt;
         &lt;encoder
                 class=&quot;net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder&quot;&gt;
@@ -162,34 +220,56 @@ output{
                 &lt;pattern&gt;
                     &lt;pattern&gt;
                         {
+                        &quot;env&quot;:&quot;${env:-}&quot;,
                         &quot;severity&quot;: &quot;%level&quot;,
-                        &quot;service&quot;: &quot;${springAppName:-}&quot;,
-                        &quot;trace&quot;: &quot;%X{X-B3-TraceId:-}&quot;,
-                        &quot;span&quot;: &quot;%X{X-B3-SpanId:-}&quot;,
-                        &quot;exportable&quot;: &quot;%X{X-Span-Export:-}&quot;,
+                        &quot;applicationName&quot;: &quot;${springAppName:-}&quot;,
+                        &quot;requestId&quot;: &quot;%X{requestId:-}&quot;,
                         &quot;pid&quot;: &quot;${PID:-}&quot;,
                         &quot;thread&quot;: &quot;%thread&quot;,
                         &quot;class&quot;: &quot;%logger{40}&quot;,
-                        &quot;rest&quot;: &quot;%message&quot;
-                        }                                        &lt;/pattern&gt;
+                        &quot;message&quot;: &quot;%message&quot;
+                        }
+                    &lt;/pattern&gt;
                 &lt;/pattern&gt;
+                &lt;stackTrace&gt;
+                    &lt;throwableConverter class=&quot;net.logstash.logback.stacktrace.ShortenedThrowableConverter&quot;&gt;
+                        &lt;maxDepthPerThrowable&gt;30&lt;/maxDepthPerThrowable&gt;
+                        &lt;maxLength&gt;2048&lt;/maxLength&gt;
+                        &lt;shortenedClassNameLength&gt;20&lt;/shortenedClassNameLength&gt;
+                        &lt;exclude&gt;^sun\.reflect\..*\.invoke&lt;/exclude&gt;
+                        &lt;exclude&gt;^net\.sf\.cglib\.proxy\.MethodProxy\.invoke&lt;/exclude&gt;
+                        &lt;rootCauseFirst&gt;true&lt;/rootCauseFirst&gt;
+                    &lt;/throwableConverter&gt;
+                &lt;/stackTrace&gt;
             &lt;/providers&gt;
         &lt;/encoder&gt;
     &lt;/appender&gt;
 
-    &lt;!-- 日志输出级别 --&gt;
+    &lt;!-- 测试环境输出级别 --&gt;
+    &lt;springProfile name=&quot;test,test2,work&quot;&gt;
+        &lt;root level=&quot;INFO&quot;&gt;
+            &lt;appender-ref ref=&quot;INFO_FILE&quot; /&gt;
+            &lt;appender-ref ref=&quot;ERROR_FILE&quot; /&gt;
+        &lt;/root&gt;
+    &lt;/springProfile&gt;
+
+    &lt;!-- 线上环境输出级别 --&gt;
+    &lt;springProfile name=&quot;uat,prod&quot;&gt;
+        &lt;root level=&quot;INFO&quot;&gt;
+            &lt;appender-ref ref=&quot;logstash&quot; /&gt;
+        &lt;/root&gt;
+    &lt;/springProfile&gt;
+
     &lt;root level=&quot;INFO&quot;&gt;
         &lt;appender-ref ref=&quot;console&quot; /&gt;
-        &lt;appender-ref ref=&quot;logstash&quot; /&gt;
-    &lt;/root&gt;&lt;/configuration&gt;
+    &lt;/root&gt;
+
+&lt;/configuration&gt;
 </code></pre>
 <h2 id="三-配置-pattern">三、配置 pattern</h2>
 <p>配置 pattern 输入*，匹配所有数据。</p>
-<figure data-type="image" tabindex="1"><img src="https://mmbiz.qpic.cn/mmbiz_png/6tfIKgjKHmQytAOR40L4RTdo0fOIETxPIcHIqJIp9fjbtM7pYfFY8YibIxeScI335LlWSxmbQics9ltkGyiaZqAnQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></figure>
 <p>选择时间@timestamp，这样数据展示会以时间排序</p>
-<figure data-type="image" tabindex="2"><img src="https://mmbiz.qpic.cn/mmbiz_png/6tfIKgjKHmQytAOR40L4RTdo0fOIETxPeE3yJKaETkibojVmqcvicLO0a1V7LxcDDPLYZnlqiaeFEK85m6x83GvUA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></figure>
 <p>好了 ，点击discover，就可以看到我们springboot-elk项目的日志信息了。</p>
-<figure data-type="image" tabindex="3"><img src="https://mmbiz.qpic.cn/mmbiz_png/6tfIKgjKHmQytAOR40L4RTdo0fOIETxPUD4fiaQNtU93IMaMJqZxd5bNGeZupDqyS67XOuVOOPBIsO9hgjshr0Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></figure>
 
               </div>
               <div class="toc-container">
@@ -214,9 +294,9 @@ output{
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://www.luoboyu.com/post/wei-fu-wu-he-xin">
+            <a href="https://www.luoboyu.com/post/jvm-gong-ju">
               <h3 class="post-title">
-                Java微服务核心
+                JVM 常用的工具
               </h3>
             </a>
           </div>
